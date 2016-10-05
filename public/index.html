@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <!-- build:css(public) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-notification/dist/angular-ui-notification.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css(public) styles/app.css -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="app/components/home/home.css">
+    <link rel="stylesheet" href="app/components/login/login.css">
+    <!-- endinject -->
+    <!-- endbuild -->
+</head>
+<body data-ng-controller="indexController as vm">
+<div data-ng-include="'app/components/navbar/navbar.template.html'" data-ng-if="vm.isAuthenticated()"></div>
+<div ui-view></div>
+
+<!-- build:js(public) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/satellizer/dist/satellizer.js"></script>
+<script src="bower_components/flow.js/dist/flow.js"></script>
+<script src="bower_components/ng-flow/dist/ng-flow.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="bower_components/angular-ui-notification/dist/angular-ui-notification.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js(public) scripts/app.js -->
+<!-- inject:js -->
+<script src="app/components/shared/shared.module.js"></script>
+<script src="app/components/shared/httpInterceptor.js"></script>
+<script src="app/components/shared/auth.service.js"></script>
+<script src="app/components/navbar/navbar.module.js"></script>
+<script src="app/components/navbar/navbar.controller.js"></script>
+<script src="app/components/login/login.module.js"></script>
+<script src="app/components/login/login.route.js"></script>
+<script src="app/components/login/login.controller.js"></script>
+<script src="app/components/home/home.module.js"></script>
+<script src="app/components/home/tweet.service.js"></script>
+<script src="app/components/home/home.route.js"></script>
+<script src="app/components/home/home.controller.js"></script>
+<script src="app/index.module.js"></script>
+<script src="app/index.controller.js"></script>
+<script src="app/index.config.js"></script>
+<!-- endinject -->
+
+<!-- inject:partials -->
+<script src="app/partials/templateCacheHtml.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+</body>
+</html>

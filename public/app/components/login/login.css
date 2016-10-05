@@ -1,0 +1,28 @@
+.login-form-container .title h1 {
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 60s infinite linear;
+    font-size: 3.5em;
+}
+
+.login-form-container {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 500px;
+}
+
+.login-form-container .social-button {
+    text-align: center;
+}
