@@ -11,13 +11,14 @@ module.exports.create = function (req, res) {
         type: file.type,
         size: file.size,
         name: file.originalFilename
-    }).then(response.item(res), response.error(res));
+    }).then(response.created(res), response.error(res));
 };
 
 module.exports.get = function (req, res) {
     return Image.findById(req.params.id)
         .then(function (image) {
             res.contentType(image.type);
+            res.status(200);
             res.end(image.data, 'binary');
         }, response.error(res));
 };

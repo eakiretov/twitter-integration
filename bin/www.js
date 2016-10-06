@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var config = require('../config');
 var logger = require('../middleware/logger');
 var Promise = require('bluebird');
+var services = require('../services');
 
 mongoose.Promise = Promise;
 
@@ -30,7 +31,7 @@ mongoose.connection.on('reconnected', function () {
 });
 
 // If the connection throws an error
-mongoose.connection.on('error',function (err) {
+mongoose.connection.on('error', function (err) {
     logger.error('Mongoose default connection error: ' + err);
 });
 
@@ -40,17 +41,19 @@ mongoose.connection.on('disconnected', function () {
 });
 
 // If the Node process ends, close the Mongoose connection
-process.on('SIGINT', function() {
+process.on('SIGINT', function () {
     mongoose.connection.close(function () {
         logger.info('Mongoose default connection disconnected through app termination');
         process.exit(0);
     });
 });
 
+services.inject('twitter', require('../services/twitter'));
+
 var httpServer = http.createServer(app);
 
 httpServer.listen(config.PORT, function (err) {
-    if (err){
+    if (err) {
         return logger.error(err);
     }
 

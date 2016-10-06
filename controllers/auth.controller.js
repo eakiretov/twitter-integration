@@ -4,9 +4,10 @@ var jwt = require('jsonwebtoken');
 var config = require('../config');
 var User = require('../models/user');
 var response = require('../middleware/response');
-var twitter = require('../services/twitter');
+var services = require('../services');
 
 module.exports.twitter = function (req, res) {
+    var twitter = services.resolve('twitter');
     if (!req.body.oauth_token && !req.body.oauth_verifier) {
         return twitter.getTwitterRequestToken()
             .then(function (data) {
