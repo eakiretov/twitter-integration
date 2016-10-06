@@ -1,0 +1,36 @@
+1. We can use PM2 to run the app in cluster mode and have an ability to control and monitor it.
+2. Probably, we need to decouple controllers and extract all methods not served web requests to separate services or to models.
+3. Add indexes to models. For example, user model - we can add unique index to email filed. There are some other models where we can do the same.
+4. Most of the models have override for toJSON method. To avoid code duplication we can create a base model where we can do this and inherit others from it.
+5. Use promises. Instead of error handling we have now we can use promises chain and have one error handler at the end. Please see an example:
+
+instead of:
+methodA(params, fucntion(err, data){
+	if (err){
+		return res.send(500, ….);
+        }
+
+	methodB(data, function(err, data2){
+		if (err){
+			return res.send(500, …);
+		}
+
+		res.send(data2);
+	});
+});
+
+we will have:
+
+return methodA(params)
+	.then(function(data){
+		return methodB(data);
+	})
+	.then(function(data){
+		return handleResponse(data2);
+	})
+	.then(null, handleError(res));
+
+6. Remove auth checks from controller actions and move it to auth service.
+7. Probably it will be better to use HTTPS, since app works with use data, such as addresses, phones and etc
+8. General recommendations: use the save formatting in the code, remove unused code, decoupling for appEvents.js, it contains unrelated code.
+9. Also, we can think about of dividing the app into the small pieces (micro services) and use private NPM packages to inject dependencies, such as domain model, data access etc.
