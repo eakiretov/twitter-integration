@@ -52,7 +52,6 @@ module.exports = function (options) {
             .pipe($.inject(injectScripts, injectOptions))
             .pipe($.inject(partialsInjectFile, partialsInjectOptions))
             .pipe(wiredep(options.wiredep))
-            .pipe(gulp.dest(options.src))
             .pipe(gulp.dest(options.dist));
     });
 };
