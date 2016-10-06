@@ -9,7 +9,8 @@
                     url: url,
                     templateUrl: 'app/components/login/login.template.html',
                     controller: 'loginController',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm',
+                    authenticate: false
                 };
             };
 

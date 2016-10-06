@@ -10,7 +10,8 @@
                     url: url,
                     templateUrl: 'app/components/home/home.template.html',
                     controller: 'homeController',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm',
+                    authenticate: true
                 };
             };
 

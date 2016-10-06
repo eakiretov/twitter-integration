@@ -36,14 +36,12 @@
         })
         .run(function ($rootScope, $window, $log, $state, authService) {
 
-            $rootScope.$on('$stateChangeSuccess', function (e, data) {
-                if (data.name != 'login') {
-                    if (!authService.isAuthenticated()) {
-                        $state.go('login');
-                    }
+            $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
+                if (toState.authenticate && !authService.isAuthenticated()) {
+                    // User isn’t authenticated
+                    $state.transitionTo("login");
+                    event.preventDefault();
                 }
-
-                $window.document.body.scrollTop = $window.document.documentElement.scrollTop = 0;
             });
 
             $rootScope.$on('$stateChangeError', function () {

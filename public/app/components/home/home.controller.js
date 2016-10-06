@@ -3,7 +3,9 @@
 (function () {
     angular.module('login').controller('homeController', function (tweetService, authService, Notification) {
         var vm = this;
+
         vm.tweet = {};
+
         vm.flowOptions = {
             target: '/media',
             uploadMethod: 'POST',
@@ -64,8 +66,6 @@
                 });
         };
 
-        if (authService.isAuthenticated()) {
-            vm.refresh();
-        }
+        vm.refresh();
     });
 })();
