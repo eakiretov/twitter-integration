@@ -12,7 +12,8 @@
     "url": "git+https://github.com/eakiretov/twitter-integration.git"
   },
   "keywords": [
-    "twitter"
+    "twitter",
+    "twitter-integration"
   ],
   "author": "Evgeniy Kiretov",
   "license": "ISC",
